@@ -1,0 +1,273 @@
+<odoo>
+  <data>
+    <!--Vistas cliente-->
+    <record model="ir.ui.view" id="partner_instructor_form_view">
+      <field name="name">Cliente</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_form" />
+      <field name="arch" type="xml">
+        <notebook position="inside">
+          <page string="Sobre el taller">
+            <group>
+              <field name="es_mecanico" />
+              <field name="vehiculos_ids" />
+              <field name="email_cliente" />
+            </group>
+          </page>
+        </notebook>
+      </field>
+    </record>
+
+    <record id="partner_instructor_tree_view" model="ir.ui.view">
+      <field name="name">Cliente</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_tree" />
+      <field name="arch" type="xml">
+        <tree>
+          <field name="es_mecanico" />
+          <field name="vehiculos_ids" />
+          <field name="email_cliente" />
+        </tree>
+      </field>
+    </record>
+
+    <!--Vistas_vehiculo-->
+    <record id="vehiculo_form" model="ir.ui.view">
+      <field name="name">Vehiculo</field>
+      <field name="model">taller_motortech.vehiculo</field>
+      <field name="arch" type="xml">
+        <form string="">
+          <sheet>
+            <group>
+              <field name="imagen" widget="image" class="oe_avatar"
+                options="{'preview_image': 'imagen'}" />
+              <field name="marca" />
+              <field name="modelo" />
+              <field name="año" />
+              <field name="años" />
+              <field name="name" />
+              <field name="cliente_id"/>
+              <field name="taller_id" />
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <record id="vehiculo_tree" model="ir.ui.view">
+      <field name="name">Vehiculo</field>
+      <field name="model">taller_motortech.vehiculo</field>
+      <field name="arch" type="xml">
+        <tree string="">
+          <field name="imagen" />
+          <field name="marca" />
+          <field name="modelo" />
+          <field name="año" />
+          <field name="años" />
+          <field name="name" />
+          <field name="cliente_id"/>
+          <field name="taller_id" />
+        </tree>
+      </field>
+    </record>
+    <record id="vehiculo_kanban" model="ir.ui.view">
+      <field name="name">Vehiculo Kanban</field>
+      <field name="model">taller_motortech.vehiculo</field>
+      <field name="arch" type="xml">
+        <kanban>
+          <templates>
+            <t t-name="kanban-box">
+              <div class="oe_kanban_card oe_kanban_global_click">
+                <div class="o_kanban_image mr-1">
+                  <field name="imagen" widget="image" class="oe_avatar"
+                    options="{'preview_image':'imagen'}" />
+                </div>
+                <field name="marca" />
+                <br />
+                <field name="modelo" />
+                <br />
+                <field name="name" />
+                <br />
+              </div>
+            </t>
+          </templates>
+        </kanban>
+      </field>
+    </record>
+
+    <!--Vistas_servicio-->
+    <record id="servicio_form" model="ir.ui.view">
+      <field name="name">Servicio</field>
+      <field name="model">taller_motortech.servicio</field>
+      <field name="arch" type="xml">
+        <form string="">
+          <sheet>
+            <group>
+              <field name="name" />
+              <field name="descripcion" />
+              <field name="precio" />
+              <field name="duracion_estimada" />
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <record id="servicio_tree" model="ir.ui.view">
+      <field name="name">Servicio</field>
+      <field name="model">taller_motortech.servicio</field>
+      <field name="arch" type="xml">
+        <tree string="">
+          <field name="name" />
+          <field name="descripcion" />
+          <field name="precio" />
+          <field name="duracion_estimada" />
+        </tree>
+      </field>
+    </record>
+
+    <!--Vistas_OrdenTrabajo-->
+    <record id="ordentrabajo_form" model="ir.ui.view">
+      <field name="name">Orden trabajo</field>
+      <field name="model">taller_motortech.ordentrabajo</field>
+      <field name="arch" type="xml">
+        <form string="">
+          <!--boton_de_enviar_correo-->
+          <xpath expr="/form/*" position="before">
+            <header>
+              <button name="send_email" string="Enviar correo" type="object" class="oe_highlight" />
+            </header>
+          </xpath>
+
+          <sheet>
+            <group>
+              <field name="fecha_ingreso" widget="daterange" options="{'related_end_date': 'fecha_retirada'}" />
+              <field name="fecha_retirada" widget="daterange" options="{'related_start_date': 'fecha_ingreso'}" />
+              <field name="estado_orden" />
+              <field name="cliente" />
+              <field name="vehiculo" />
+              <field name="taller" />
+              <field name="servicio_realizado_ids" />
+              <field name="subtotal" />
+              <field name="duracion_total" />
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <record id="ordentrabajo_tree" model="ir.ui.view">
+      <field name="name">Orden trabajo</field>
+      <field name="model">taller_motortech.ordentrabajo</field>
+      <field name="arch" type="xml">
+        <tree string="">
+          <field name="fecha_ingreso" />
+          <field name="fecha_retirada" />
+          <field name="estado_orden" />
+          <field name="cliente" />
+          <field name="vehiculo" />
+          <field name="taller" />
+          <field name="servicio_realizado_ids" widget="many2many_tags" />
+          <field name="subtotal" />
+          <field name="duracion_total" />
+        </tree>
+      </field>
+    </record>
+    <record id="ordentrabajo_calendar" model="ir.ui.view">
+      <field name="name">Orden trabajo Calendar</field>
+      <field name="model">taller_motortech.ordentrabajo</field>
+      <field name="arch" type="xml">
+        <calendar string="Ordenes de trabajo"
+          date_start="fecha_ingreso"
+          date_stop="fecha_retirada"
+          color="vehiculo"
+          mode="month">
+          <field name="vehiculo" />
+          <field name="cliente" />
+        </calendar>
+      </field>
+    </record>
+
+    <!--Vistas_Taller-->
+    <record id="taller_form" model="ir.ui.view">
+      <field name="name">Taller</field>
+      <field name="model">taller_motortech.taller</field>
+      <field name="arch" type="xml">
+        <form string="">
+          <sheet>
+            <group>
+              <field name="name" />
+              <field name="fecha_fundacion" />
+              <field name="ubicacion" />
+              <field name="capacidad_maxima" />
+              <field name="descripcion" />
+              <!--<field name="vehiculos_ids" />-->
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <record id="taller_tree" model="ir.ui.view">
+      <field name="name">Taller</field>
+      <field name="model">taller_motortech.taller</field>
+      <field name="arch" type="xml">
+        <tree string="">
+          <field name="name" />
+          <field name="fecha_fundacion" />
+          <field name="ubicacion" />
+          <field name="capacidad_maxima" />
+          <field name="descripcion" />
+          <!--<field name="vehiculos_ids" widget="many2many_tags" />-->
+        </tree>
+      </field>
+    </record>
+
+
+    <!--acciones_de_ventana-->
+    <!--cliente-->
+    <record model="ir.actions.act_window" id="action_cliente">
+      <field name="name">Cliente</field>
+      <field name="res_model">res.partner</field>
+      <field name="view_mode">tree,form,kanban,activity</field>
+    </record>
+    <!--vehiculo-->
+    <record model="ir.actions.act_window" id="action_vehiculo">
+      <field name="name">Vehiculo</field>
+      <field name="res_model">taller_motortech.vehiculo</field>
+      <field name="view_mode">tree,form,kanban</field>
+    </record>
+    <!--servicio-->
+    <record model="ir.actions.act_window" id="action_servicio">
+      <field name="name">Servicio</field>
+      <field name="res_model">taller_motortech.servicio</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <!--orden_trabajo-->
+    <record model="ir.actions.act_window" id="action_ordentrabajo">
+      <field name="name">Orden trabajo</field>
+      <field name="res_model">taller_motortech.ordentrabajo</field>
+      <field name="view_mode">tree,form,calendar</field>
+    </record>
+    <!--detalle_servicio-->
+    <record model="ir.actions.act_window" id="action_taller">
+      <field name="name">Taller</field>
+      <field name="res_model">taller_motortech.taller</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!--Menú_padre-->
+    <menuitem id="menu_padre" name="Taller MotorTech" groups="group_admin,group_mecanico"
+      web_icon="taller_motortech,static/description/icon.png" />
+    <!--Menús_hijos-->
+    <menuitem id="submenu_taller" name="Taller" action="action_taller" parent="menu_padre"
+      groups="group_admin" />
+    <menuitem id="submenu_cliente" name="Cliente" action="action_cliente" parent="menu_padre"
+      groups="group_admin,group_mecanico" />
+    <menuitem id="submenu_vehiculo" name="Vehiculo" action="action_vehiculo" parent="menu_padre"
+      groups="group_admin,group_mecanico" />
+    <menuitem id="submenu_servicio" name="Servicio" action="action_servicio" parent="menu_padre"
+      groups="group_admin,group_mecanico" />
+    <menuitem id="submenu_orden_trabajo" name="OrdenTrabajo" action="action_ordentrabajo"
+      parent="menu_padre" groups="group_admin,group_mecanico" />
+
+
+  </data>
+</odoo>

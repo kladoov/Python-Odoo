@@ -1,0 +1,42 @@
+<odoo>
+  <data>
+      <record model="taller_motortech.servicio" id="servicio_1">
+          <field name="name">Cambio de aceite</field>
+          <field name="descripcion">Cambio de aceite y filtro</field>
+          <field name="precio">50.00</field>
+          <field name="duracion_estimada">1.5</field>
+      </record>
+      <record model="taller_motortech.servicio" id="servicio_2">
+          <field name="name">Revisión de frenos</field>
+          <field name="descripcion">Revisión y ajuste de frenos</field>
+          <field name="precio">80.00</field>
+          <field name="duracion_estimada">2</field>
+      </record>
+      <record model="taller_motortech.servicio" id="servicio_3">
+          <field name="name">Cambio de neumáticos</field>
+          <field name="descripcion">Cambio de neumáticos y alineación</field>
+          <field name="precio">120.00</field>
+          <field name="duracion_estimada">1.5</field>
+      </record>
+      <record model="taller_motortech.servicio" id="servicio_4">
+          <field name="name">Mantenimiento completo</field>
+          <field name="descripcion">Mantenimiento general del vehículo</field>
+          <field name="precio">200.00</field>
+          <field name="duracion_estimada">3</field>
+      </record>
+      <record model="taller_motortech.servicio" id="servicio_5">
+          <field name="name">Revisión de motor</field>
+          <field name="descripcion">Revisión y diagnóstico del motor</field>
+          <field name="precio">150.00</field>
+          <field name="duracion_estimada">2.5</field>
+      </record>
+
+    <!--<record model="taller_motortech.taller" id="taller_motortech">
+        <field name="name">Taller MotorTech</field>
+        <field name="fecha_fundacion" eval="datetime.strptime('2018-12-21', '%Y-%m-%d').date()"/>
+        <field name="ubicacion">Avd. La Roda S/N</field>
+        <field name="capacidad_maxima">10</field>
+        <field name="descripcion">Taller es un espacio dedicado a la reparación, mantenimiento y mejora de vehículos, donde se cuenta con personal especializado y herramientas adecuadas para realizar diferentes servicios mecánicos, eléctricos y de carrocería.</field>
+    </record>-->
+  </data>
+</odoo>

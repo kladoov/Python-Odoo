@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+cli,cliente,base.model_res_partner,group_admin,1,1,1,1
+veh,vehiculo,taller_motortech.model_taller_motortech_vehiculo,group_admin,1,1,1,1
+ser,servicio,taller_motortech.model_taller_motortech_servicio,group_admin,1,1,1,1
+orden,ordentrabajo,taller_motortech.model_taller_motortech_ordentrabajo,group_admin,1,1,1,1
+tall,taller,taller_motortech.model_taller_motortech_taller,group_admin,1,1,1,1
+
+climec,cliente,base.model_res_partner,group_mecanico,1,1,1,1
+vehmec,vehiculo,taller_motortech.model_taller_motortech_vehiculo,group_mecanico,1,1,1,1
+sermec,servicio,taller_motortech.model_taller_motortech_servicio,group_mecanico,1,1,1,1
+ordenmec,ordentrabajo,taller_motortech.model_taller_motortech_ordentrabajo,group_mecanico,1,1,1,1
+tallmec,taller,taller_motortech.model_taller_motortech_taller,group_mecanico,1,0,0,0

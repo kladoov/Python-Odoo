@@ -1,0 +1,10 @@
+<odoo>
+    <data>
+        <record id="group_admin" model="res.groups">
+            <field name="name">Administrador / TallerMotorTech</field>
+        </record>
+        <record id="group_mecanico" model="res.groups">
+            <field name="name">Mecanico / TallerMotorTech</field>
+        </record>
+    </data>
+</odoo>

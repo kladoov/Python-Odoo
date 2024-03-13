@@ -1,0 +1,59 @@
+<odoo>
+    <record id="action_report_taller_vehiculo" model="ir.actions.report">
+        <field name="name">Vehiculo</field>
+        <field name="model">taller_motortech.vehiculo</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">taller_motortech.report_vehiculo_view</field>
+        <field name="report_file">taller_motortech.report_vehiculo_view</field>
+        <field name="binding_model_id" ref="model_taller_motortech_vehiculo"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_vehiculo_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="vehiculo">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Detalles del vehiculo</h2><hr/>
+
+                        <div>
+                            <strong>Matricula: </strong>
+                            <span t-field="vehiculo.name"></span>
+                        </div>
+                        <br/>
+                        
+                        <table class="table table-sm o_main_table">
+                            <thead>
+                                <tr>
+                                    <th>Marca</th>
+                                    <th>Modelo</th>
+                                    <th>Año de importación</th>
+                                    <th>Años</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span t-field="vehiculo.marca"/></td>
+                                    <td><span t-field="vehiculo.modelo"/></td>
+                                    <td><span t-field="vehiculo.año"/></td>
+                                    <td><span t-field="vehiculo.años"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div>
+                            <strong>Propietario del vehiculo: </strong>
+                            <span t-field="vehiculo.cliente_id"></span>
+                        </div><br/>
+
+                        <div>
+                            <strong>Taller de reparacion: </strong>
+                            <span t-field="vehiculo.taller_id"></span>
+                        </div>
+                        
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

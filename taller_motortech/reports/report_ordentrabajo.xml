@@ -1,0 +1,71 @@
+<odoo>
+    <record id="action_report_taller_ordentrabajo" model="ir.actions.report">
+        <field name="name">OrdenTrabajo</field>
+        <field name="model">taller_motortech.ordentrabajo</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">taller_motortech.report_ordentrabajo_view</field>
+        <field name="report_file">taller_motortech.report_ordentrabajo_view</field>
+        <field name="binding_model_id" ref="model_taller_motortech_ordentrabajo"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_ordentrabajo_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="ordentrabajo">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Albarán</h2><hr/>
+
+                        <div>
+                            <strong>Fecha ingreso vehiculo: </strong>
+                            <span t-field="ordentrabajo.fecha_ingreso"></span>
+                        </div>
+
+                        <div>
+                            <strong>Fecha retirada vehiculo: </strong>
+                            <span t-field="ordentrabajo.fecha_retirada"></span>
+                        </div>
+
+                        <div>
+                            <strong>Estado orden: </strong>
+                            <span t-field="ordentrabajo.estado_orden"></span>
+                        </div><br/>
+                        
+                        <table class="table table-sm o_main_table">
+                            <thead>
+                                <tr>
+                                    <th>Cliente</th>
+                                    <th>Vehiculo</th>
+                                    <th>Taller de reparación</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span t-field="ordentrabajo.cliente"/></td>
+                                    <td><span t-field="ordentrabajo.vehiculo"/></td>
+                                    <td><span t-field="ordentrabajo.taller"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div>
+                            <strong>Servicios realizados: </strong>
+                            <span t-field="ordentrabajo.servicio_realizado_ids"></span>
+                        </div><br/>
+
+                        <div>
+                            <strong>Duracion total del trabajo: </strong>
+                            <span t-field="ordentrabajo.duracion_total"></span>
+                        </div>
+
+                        <div>
+                            <strong>Subtotal: </strong>
+                            <span t-field="ordentrabajo.subtotal"></span>
+                        </div>
+                        
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
