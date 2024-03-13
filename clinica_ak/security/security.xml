@@ -1,0 +1,11 @@
+<odoo>
+    <data>
+        <record id="doctor_manager" model="res.groups">
+            <field name="name">Doctor / Manager</field>
+        </record>
+
+        <record id="gestor_manager" model="res.groups">
+            <field name="name">Gestor / Manager</field>
+        </record>
+    </data>
+</odoo>

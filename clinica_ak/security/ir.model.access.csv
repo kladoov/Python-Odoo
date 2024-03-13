@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+cit,citas,clinica_ak.model_clinica_ak_citas,gestor_manager,1,1,1,1
+pac,pacientes,clinica_ak.model_clinica_ak_pacientes,gestor_manager,1,1,1,1
+enf,enfermedades,clinica_ak.model_clinica_ak_enfermedades,gestor_manager,1,1,1,1
+cit,citas,clinica_ak.model_clinica_ak_citas,doctor_manager,1,0,0,0
+pac,pacientes,clinica_ak.model_clinica_ak_pacientes,doctor_manager,1,1,0,0
+enf,enfermedades,clinica_ak.model_clinica_ak_enfermedades,doctor_manager,1,0,0,0

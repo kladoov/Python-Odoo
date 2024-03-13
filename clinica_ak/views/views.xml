@@ -1,0 +1,138 @@
+<odoo>
+  <data>
+    <!--Vistas Citas-->
+    <record id="citas_form" model="ir.ui.view">
+      <field name="name">Citas Form</field>
+      <field name="model">clinica_ak.citas</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="descripcion" />
+              <field name="fecha" />
+              <field name="paciente" />
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="citas_tree" model="ir.ui.view">
+      <field name="name">Citas Tree</field>
+      <field name="model">clinica_ak.citas</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="fecha" />
+          <field name="paciente" />
+        </tree>
+      </field>
+    </record>
+
+    <!--Vistas
+    Pacientes-->
+    <record id="pacientes_form" model="ir.ui.view">
+      <field name="name">Pacientes Form</field>
+      <field name="model">clinica_ak.pacientes</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="nombre" />
+              <field name="fecha_nacimiento" />
+              <field name="enfermedades" />
+              <field name="edad"/>
+              <field name="numero_enfermedades"/>
+              <field name="citas" />
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="pacientes_tree" model="ir.ui.view">
+      <field name="name">Pacientes Tree</field>
+      <field name="model">clinica_ak.pacientes</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nombre" />
+          <field name="edad"/>
+        </tree>
+      </field>
+    </record>
+
+    <!--Vistas
+    Enfermedades-->
+    <record id="enfermedades_form" model="ir.ui.view">
+      <field name="name">Enfermedades Form</field>
+      <field name="model">clinica_ak.enfermedades</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="nombre" />
+              <field name="pacientes" />
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+
+
+
+    <!--acciones
+    de ventana-->
+    <!--citas-->
+    <record model="ir.actions.act_window" id="action_citas">
+      <field name="name">Citas</field>
+      <field name="res_model">clinica_ak.citas</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <!--pacientes-->
+    <record model="ir.actions.act_window" id="action_pacientes">
+      <field name="name">Pacientes</field>
+      <field name="res_model">clinica_ak.pacientes</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <!--enfermedades-->
+    <record model="ir.actions.act_window" id="action_enfermedades">
+      <field name="name">Enfermedades</field>
+      <field name="res_model">clinica_ak.enfermedades</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+
+
+
+    <!--Menú padre-->
+    <menuitem id="menu_clinica_padre" name="Clinica_AK" groups="doctor_manager,gestor_manager" />
+    <!--Menús hijos-->
+    <menuitem id="submenu_citas" name="Citas"
+      action="action_citas" parent="menu_clinica_padre" groups="doctor_manager,gestor_manager" />
+
+    <menuitem id="submenu_pacientes" name="Pacientes"
+      action="action_pacientes" parent="menu_clinica_padre" groups="doctor_manager,gestor_manager" />
+
+    <menuitem id="submenu_enfermedades" name="Enfermedades"
+      action="action_enfermedades" parent="menu_clinica_padre" groups="gestor_manager" />
+
+
+
+
+
+    <!--Busqueda Pacientes-->
+    <record id="search_busqueda" model="ir.ui.view">
+      <field name="name">Busqueda Pacientes</field>
+      <field name="model">clinica_ak.pacientes</field>
+      <field name="arch" type="xml">
+        <search string="">
+          <filter name="edad" domain="[('edad', '&gt;=',18)]" />
+        </search>
+      </field>
+    </record>
+
+
+  </data>
+</odoo>

@@ -1,0 +1,36 @@
+<odoo>
+    <record id="action_report_citas" model="ir.actions.report">
+        <field name="name">Citas</field>
+        <field name="model">clinica_ak.citas</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">clinica_ak.citas_view</field>
+        <field name="report_file">clinica_ak.citas_view</field>
+        <field name="binding_model_id" ref="model_clinica_ak_citas"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="citas_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="citas">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div>
+                            <strong>Descripcion corta:</strong>
+                            <span t-field="citas.descripcion"></span>
+                        </div>
+
+                        <div>
+                            <strong>Fecha:</strong>
+                            <span t-field="citas.fecha"></span>
+                        </div>
+
+                        <div>
+                            <strong>Paciente:</strong>
+                            <span t-field="citas.paciente"></span>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

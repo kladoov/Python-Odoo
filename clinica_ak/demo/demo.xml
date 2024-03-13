@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="enfermedad_asma" model="clinica_ak.enfermedades">
+            <field name="nombre">Asma</field>
+        </record>
+        <record id="enfermedad_gripe" model="clinica_ak.enfermedades">
+            <field name="nombre">Gripe</field>
+        </record>
+        <record id="enfermedad_diabetes" model="clinica_ak.enfermedades">
+            <field name="nombre">Diabetes</field>
+        </record>
+    </data>
+</odoo>
